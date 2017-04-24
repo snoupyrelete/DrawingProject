@@ -7,23 +7,25 @@ import javax.swing.JFrame;
 
 import draw.controller.DrawController;
 
-public class MainFrame extends JFrame {
-
+public class DrawingFrame extends JFrame
+{
 	private DrawController baseController;
-	private ShapePanel mainPanel;
+	private DrawingPanel mainPanel;
 	
-	public MainFrame(DrawController baseController) {
+	public DrawingFrame(DrawController baseController) 
+	{
 		super();
 		this.baseController = baseController;
-		mainPanel = new ShapePanel(baseController);
+		mainPanel = new DrawingPanel(baseController);
 		setupFrame();
 	}
 	
 	private void setupFrame()
 	{
 		this.setContentPane(mainPanel);
-		this.setTitle("Drawing window");
-		this.setSize(new Dimension(750, 500));
+		this.setTitle("Drawing Window");
+		this.setResizable(true);
+		this.setSize(new Dimension(700, 700));
 		this.setVisible(true);
 	}
 }

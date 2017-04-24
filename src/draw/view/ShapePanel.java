@@ -1,7 +1,10 @@
 package draw.view;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
@@ -53,5 +56,31 @@ public class ShapePanel extends JPanel {
 			rectangleList.add(currentRectangle);	
 		}
 		this.repaint();
+	}
+	
+	@Override
+	protected void paintComponent(Graphics graphics)
+	{
+		//this.setBackground(getRandomColor());
+		Graphics2D drawingGraphics = (Graphics2D) graphics;
+		
+		for(Rectangle currentRect : rectangleList)
+		{
+			drawingGraphics.setColor(getRandomColor());
+			int strokeWidth = (int) (Math.random() * 10) + 1;
+			drawingGraphics.setStroke(new BasicStroke(strokeWidth));
+			
+			
+			int random  = (int) (Math.random() * 35);
+			if(random % 5 == 0 || random % 7 == 0)
+			{
+				drawingGraphics.fill(currentRect);
+			}
+			else
+			{
+				drawingGraphics.draw(currentRect);
+			}
+			
+		}
 	}
 }

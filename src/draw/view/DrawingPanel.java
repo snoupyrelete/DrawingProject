@@ -59,7 +59,7 @@ public class DrawingPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent click)
 			{
-				
+				shapePanel.addRectangles();
 			}
 			
 		});
