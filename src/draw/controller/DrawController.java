@@ -1,5 +1,6 @@
 package draw.controller;
 
-public class DrawController {
-
+public class DrawController
+{
+	
 }

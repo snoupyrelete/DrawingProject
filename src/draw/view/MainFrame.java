@@ -10,12 +10,12 @@ import draw.controller.DrawController;
 public class MainFrame extends JFrame {
 
 	private DrawController baseController;
-	private MainPanel mainPanel;
+	private ShapePanel mainPanel;
 	
 	public MainFrame(DrawController baseController) {
 		super();
 		this.baseController = baseController;
-		mainPanel = new MainPanel(baseController);
+		mainPanel = new ShapePanel(baseController);
 		setupFrame();
 	}
 	
