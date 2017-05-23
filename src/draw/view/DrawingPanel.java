@@ -14,6 +14,8 @@ import draw.controller.DrawController;
 public class DrawingPanel extends JPanel {
 
 	private ShapePanel shapePanel;
+	private GraphPanel graphPanel;
+	
 	private JButton rectangleButton;
 	private JButton circleButton;
 	private JButton ellipseButton;
@@ -23,12 +25,15 @@ public class DrawingPanel extends JPanel {
 	private SpringLayout baseLayout;
 	private DrawController baseController;
 	
+	
 	public DrawingPanel(DrawController baseController)
 	{
 		super();
 		this.baseController = baseController;
 		
 		shapePanel = new ShapePanel(baseController);
+		graphPanel = new GraphPanel();
+		
 		rectangleButton = new JButton("Draw Rectangles");
 		circleButton = new JButton("Draw Circles");
 		ellipseButton = new JButton("Draw Ellipses");
@@ -38,7 +43,6 @@ public class DrawingPanel extends JPanel {
 		
 		baseLayout = new SpringLayout();
 		
-		
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -47,7 +51,7 @@ public class DrawingPanel extends JPanel {
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.setBackground(Color.GRAY);
+		this.setBackground(Color.WHITE);
 		this.setPreferredSize(new Dimension(600, 600));
 		
 		this.add(rectangleButton);
@@ -58,6 +62,7 @@ public class DrawingPanel extends JPanel {
 
 		
 		this.add(shapePanel);
+		this.add(graphPanel);
 	}
 	
 	private void setupLayout()
@@ -76,6 +81,10 @@ public class DrawingPanel extends JPanel {
 		baseLayout.putConstraint(SpringLayout.SOUTH, triangleButton, -7, SpringLayout.NORTH, circleButton);
 		baseLayout.putConstraint(SpringLayout.WEST, circleButton, 0, SpringLayout.WEST, rectangleButton);
 		baseLayout.putConstraint(SpringLayout.SOUTH, circleButton, -6, SpringLayout.NORTH, rectangleButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, graphPanel, 50, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, graphPanel, 20, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, graphPanel, -200, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, graphPanel, -375, SpringLayout.EAST, this);
 	}
 	
 	private void setupListeners()
